@@ -1,11 +1,63 @@
-[gd_scene load_steps=2 format=3 uid="uid://06wdk2nxfclf"]
+[gd_scene load_steps=11 format=3 uid="uid://06wdk2nxfclf"]
 
 [ext_resource type="Texture2D" uid="uid://btl1sewksevpt" path="res://assets/sprites/test/background_1.png" id="1_d10np"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_l0ch1"]
+[ext_resource type="Script" path="res://scripts/game_state_machine/game_state_machine.gd" id="2_70o6n"]
+[ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_start_state.gd" id="3_mhdu6"]
+[ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_setup_state.gd" id="4_57mg2"]
+[ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_shop_state.gd" id="5_oiq8e"]
+[ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_battle_start_state.gd" id="6_boxnl"]
+[ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_battle_state.gd" id="7_jtwqv"]
+[ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_battle_end_state.gd" id="8_bfm56"]
+[ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_over_state.gd" id="9_mm5ci"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_l0ch1")
 
 [node name="Background" type="Node2D" parent="."]
 position = Vector2(320, 180)
 
 [node name="BackgroundImage" type="Sprite2D" parent="Background"]
 texture = ExtResource("1_d10np")
+
+[node name="GameStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_70o6n")
+initial_state = NodePath("GameStartState")
+
+[node name="GameStartState" type="Node" parent="GameStateMachine"]
+script = ExtResource("3_mhdu6")
+
+[node name="GameSetupState" type="Node" parent="GameStateMachine"]
+script = ExtResource("4_57mg2")
+state = 1
+
+[node name="GameShopState" type="Node" parent="GameStateMachine"]
+script = ExtResource("5_oiq8e")
+state = 2
+
+[node name="GameBattleStartState" type="Node" parent="GameStateMachine"]
+script = ExtResource("6_boxnl")
+state = 3
+
+[node name="GameBattleState" type="Node" parent="GameStateMachine"]
+script = ExtResource("7_jtwqv")
+state = 4
+
+[node name="GameBattleEndState" type="Node" parent="GameStateMachine"]
+script = ExtResource("8_bfm56")
+state = 5
+
+[node name="GameOverState" type="Node" parent="GameStateMachine"]
+script = ExtResource("9_mm5ci")
+state = 6
+
+[node name="Control" type="Control" parent="GameStateMachine"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameStateLabel" type="Label" parent="GameStateMachine/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
