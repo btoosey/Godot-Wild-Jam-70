@@ -3,7 +3,7 @@ extends Node
 
 @onready var game_state_label = $Control/GameStateLabel
 
-func _process(delta):
+func _process(_delta):
 	game_state_label.text = str(current_state.name)
 
 @export var initial_state: GameState

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://csqgvmp0y0usj"]
+
+[ext_resource type="Script" path="res://totem_head.gd" id="1_sp2kq"]
+
+[node name="TotemHead" type="Node2D"]
+script = ExtResource("1_sp2kq")
+
+[node name="FiringInterval" type="Timer" parent="."]
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-300, 0)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(300, 0)
+
+[connection signal="timeout" from="FiringInterval" to="." method="_on_firing_interval_timeout"]

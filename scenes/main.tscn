@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://06wdk2nxfclf"]
+[gd_scene load_steps=13 format=3 uid="uid://06wdk2nxfclf"]
 
 [ext_resource type="Texture2D" uid="uid://btl1sewksevpt" path="res://assets/sprites/test/background_1.png" id="1_d10np"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_l0ch1"]
 [ext_resource type="Script" path="res://scripts/game_state_machine/game_state_machine.gd" id="2_70o6n"]
+[ext_resource type="PackedScene" uid="uid://csqgvmp0y0usj" path="res://scenes/Totem/totem_head.tscn" id="3_2kbyh"]
+[ext_resource type="Script" path="res://scenes/totem_head_manager.gd" id="3_a54i6"]
 [ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_start_state.gd" id="3_mhdu6"]
 [ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_setup_state.gd" id="4_57mg2"]
 [ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_shop_state.gd" id="5_oiq8e"]
@@ -19,6 +21,21 @@ position = Vector2(320, 180)
 
 [node name="BackgroundImage" type="Sprite2D" parent="Background"]
 texture = ExtResource("1_d10np")
+
+[node name="TotemHeads" type="Node2D" parent="."]
+position = Vector2(320, 100)
+script = ExtResource("3_a54i6")
+
+[node name="TotemHead" parent="TotemHeads" instance=ExtResource("3_2kbyh")]
+
+[node name="TotemHead2" parent="TotemHeads" instance=ExtResource("3_2kbyh")]
+position = Vector2(0, 28)
+
+[node name="TotemHead3" parent="TotemHeads" instance=ExtResource("3_2kbyh")]
+position = Vector2(0, 57)
+
+[node name="TotemHead4" parent="TotemHeads" instance=ExtResource("3_2kbyh")]
+position = Vector2(0, 86)
 
 [node name="GameStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_70o6n")
