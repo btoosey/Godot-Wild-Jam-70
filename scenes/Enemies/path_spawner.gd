@@ -1,10 +1,8 @@
 extends Path2D
 
 @onready var path_follow_2d = $PathFollow2D
-const ENEMY = preload("res://scenes/enemy.tscn")
+const ENEMY = preload("res://scenes/Enemies/enemy.tscn")
 
-func _ready():
-	spawn_enemy()
 
 func spawn_enemy() -> void:
 	var new_enemy = ENEMY.instantiate()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://06wdk2nxfclf"]
+[gd_scene load_steps=23 format=3 uid="uid://06wdk2nxfclf"]
 
 [ext_resource type="Texture2D" uid="uid://btl1sewksevpt" path="res://assets/sprites/test/background_1.png" id="1_d10np"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_l0ch1"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_start_state.gd" id="3_mhdu6"]
 [ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_setup_state.gd" id="4_57mg2"]
 [ext_resource type="Script" path="res://scenes/Enemies/path_spawner.gd" id="5_20i83"]
-[ext_resource type="Script" path="res://scenes/enemy_spawner_manager.gd" id="5_ga21b"]
 [ext_resource type="Script" path="res://scenes/Enemies/enemy_follower.gd" id="5_gm1nw"]
 [ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_shop_state.gd" id="5_oiq8e"]
 [ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_battle_start_state.gd" id="6_boxnl"]
@@ -90,7 +89,6 @@ position = Vector2(0, 86)
 
 [node name="EnemyPaths" type="Node2D" parent="."]
 position = Vector2(320, 300)
-script = ExtResource("5_ga21b")
 
 [node name="LeftPath1" type="Path2D" parent="EnemyPaths"]
 curve = SubResource("Curve2D_0pey5")
@@ -183,21 +181,13 @@ script = ExtResource("5_gm1nw")
 [node name="MainUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 640.0
-offset_bottom = 360.0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="StartGameButton" type="Button" parent="MainUI"]
+[node name="Label" type="Label" parent="MainUI"]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "Start Game"
-
-[node name="NextWaveButton" type="Button" parent="MainUI"]
-visible = false
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-text = "NEXT WAVE"
+offset_right = 40.0
+offset_bottom = 23.0
 
 [node name="GameStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_70o6n")
@@ -230,5 +220,13 @@ state = 5
 script = ExtResource("9_mm5ci")
 state = 6
 
-[connection signal="pressed" from="MainUI/StartGameButton" to="." method="_on_start_game_button_pressed"]
-[connection signal="pressed" from="MainUI/NextWaveButton" to="." method="_on_next_wave_button_pressed"]
+[node name="Control" type="Control" parent="GameStateMachine"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GameStateLabel" type="Label" parent="GameStateMachine/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

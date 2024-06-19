@@ -1,7 +1,9 @@
 extends GameState
 
+@onready var start_game_button = $"../../MainUI/StartGameButton"
+
 func enter():
 	pass
 
 func exit():
-	pass
+	start_game_button.visible = false

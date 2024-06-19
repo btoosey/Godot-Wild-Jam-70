@@ -1,7 +1,9 @@
 extends GameState
 
+@onready var next_wave_button = $"../../MainUI/NextWaveButton"
+
 func enter():
-	pass
+	next_wave_button.visible = true
 
 func exit():
-	pass
+	next_wave_button.visible = false

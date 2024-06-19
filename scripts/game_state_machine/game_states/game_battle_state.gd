@@ -1,7 +1,9 @@
 extends GameState
 
+@onready var enemy_paths = $"../../EnemyPaths"
+
 func enter():
-	pass
+	enemy_paths.spawn_enemy_wave()
 
 func exit():
 	pass
