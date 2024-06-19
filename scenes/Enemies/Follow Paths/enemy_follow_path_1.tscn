@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3jlfr0puijg0"]
+
+[ext_resource type="Script" path="res://scenes/Enemies/enemy_follower.gd" id="1_k541e"]
+[ext_resource type="PackedScene" uid="uid://br338n3jjabr4" path="res://scenes/Enemies/enemy.tscn" id="2_x2xcb"]
+
+[node name="PathFollowPath1" type="PathFollow2D"]
+rotation = 3.14159
+rotates = false
+loop = false
+script = ExtResource("1_k541e")
+
+[node name="_Timer_90257" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="Enemy" parent="." instance=ExtResource("2_x2xcb")]

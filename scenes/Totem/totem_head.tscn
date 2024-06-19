@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://csqgvmp0y0usj"]
 
-[ext_resource type="Script" path="res://totem_head.gd" id="1_sp2kq"]
+[ext_resource type="Script" path="res://scenes/Totem/totem_head.gd" id="1_sp2kq"]
 
 [node name="TotemHead" type="Node2D"]
 script = ExtResource("1_sp2kq")
