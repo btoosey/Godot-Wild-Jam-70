@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://06wdk2nxfclf"]
+[gd_scene load_steps=25 format=3 uid="uid://06wdk2nxfclf"]
 
 [ext_resource type="Texture2D" uid="uid://btl1sewksevpt" path="res://assets/sprites/test/background_1.png" id="1_d10np"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_l0ch1"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_battle_state.gd" id="7_jtwqv"]
 [ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_battle_end_state.gd" id="8_bfm56"]
 [ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_over_state.gd" id="9_mm5ci"]
+[ext_resource type="Script" path="res://scenes/cursor_detector.gd" id="15_jas3j"]
 
 [sub_resource type="Curve2D" id="Curve2D_0pey5"]
 _data = {
@@ -62,6 +63,9 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 65, 20, 0, 0, 0, 0, 295, 19, 0, 0, 0, 0, 296, -114, 0, 0, 0, 0, 97, -114, 0, 0, 0, 0, 96, -73)
 }
 point_count = 5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vet1i"]
+radius = 1.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_l0ch1")
@@ -173,5 +177,15 @@ state = 5
 script = ExtResource("9_mm5ci")
 state = 6
 
+[node name="CursorDetector" type="Node2D" parent="."]
+script = ExtResource("15_jas3j")
+
+[node name="CursorDetectorArea" type="Area2D" parent="CursorDetector"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CursorDetector/CursorDetectorArea"]
+shape = SubResource("CircleShape2D_vet1i")
+
 [connection signal="pressed" from="MainUI/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="MainUI/NextWaveButton" to="." method="_on_next_wave_button_pressed"]
+[connection signal="area_entered" from="CursorDetector/CursorDetectorArea" to="CursorDetector" method="_on_cursor_detector_area_area_entered"]
+[connection signal="area_exited" from="CursorDetector/CursorDetectorArea" to="CursorDetector" method="_on_cursor_detector_area_area_exited"]

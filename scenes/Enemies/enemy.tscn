@@ -1,14 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://br338n3jjabr4"]
+[gd_scene load_steps=4 format=3 uid="uid://br338n3jjabr4"]
 
+[ext_resource type="Script" path="res://scenes/Enemies/enemy.gd" id="1_7wp7p"]
 [ext_resource type="Texture2D" uid="uid://bpffky16jxt06" path="res://assets/sprites/test/enemy_1.png" id="1_tvjla"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p7mbn"]
-radius = 8.0
+radius = 7.0
 
 [node name="Enemy" type="CharacterBody2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_p7mbn")
+script = ExtResource("1_7wp7p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_tvjla")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -16.0
+offset_right = 10.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+show_percentage = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_p7mbn")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
