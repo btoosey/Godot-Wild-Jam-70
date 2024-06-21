@@ -1,6 +1,6 @@
 extends GameState
 
-@onready var start_game_button = $"../../MainUI/StartGameButton"
+@onready var start_game_button = $"../../UI/MainUI/StartGameButton"
 
 func enter():
 	pass

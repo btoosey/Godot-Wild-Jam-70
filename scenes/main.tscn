@@ -127,24 +127,49 @@ script = ExtResource("5_20i83")
 curve = SubResource("Curve2D_2rswa")
 script = ExtResource("5_20i83")
 
-[node name="MainUI" type="Control" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MainUI" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 360.0
 
-[node name="StartGameButton" type="Button" parent="MainUI"]
+[node name="StartGameButton" type="Button" parent="UI/MainUI"]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Start Game"
 
-[node name="NextWaveButton" type="Button" parent="MainUI"]
+[node name="NextWaveButton" type="Button" parent="UI/MainUI"]
 visible = false
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
 text = "NEXT WAVE"
+
+[node name="ShopButton" type="Button" parent="UI/MainUI"]
+visible = false
+layout_mode = 0
+offset_left = 464.0
+offset_top = 135.0
+offset_right = 516.0
+offset_bottom = 166.0
+text = "SHOP"
+
+[node name="ShopUI" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 382.0
+offset_top = 85.0
+offset_right = 602.0
+offset_bottom = 203.0
 
 [node name="GameStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_70o6n")
@@ -186,7 +211,8 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CursorDetector/CursorDetectorArea"]
 shape = SubResource("CircleShape2D_vet1i")
 
-[connection signal="pressed" from="MainUI/StartGameButton" to="." method="_on_start_game_button_pressed"]
-[connection signal="pressed" from="MainUI/NextWaveButton" to="." method="_on_next_wave_button_pressed"]
+[connection signal="pressed" from="UI/MainUI/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="UI/MainUI/NextWaveButton" to="." method="_on_next_wave_button_pressed"]
+[connection signal="pressed" from="UI/MainUI/ShopButton" to="." method="_on_shop_button_pressed"]
 [connection signal="area_entered" from="CursorDetector/CursorDetectorArea" to="CursorDetector" method="_on_cursor_detector_area_area_entered"]
 [connection signal="area_exited" from="CursorDetector/CursorDetectorArea" to="CursorDetector" method="_on_cursor_detector_area_area_exited"]

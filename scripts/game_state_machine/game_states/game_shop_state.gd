@@ -1,7 +1,11 @@
 extends GameState
 
+@onready var shop_button = $"../../UI/MainUI/ShopButton"
+@onready var shop_ui = $"../../UI/ShopUI"
+
 func enter():
-	pass
+	shop_button.visible = false
+	shop_ui.visible = true
 
 func exit():
-	pass
+	shop_ui.visible = false
