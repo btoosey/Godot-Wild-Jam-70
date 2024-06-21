@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://06wdk2nxfclf"]
+[gd_scene load_steps=27 format=3 uid="uid://06wdk2nxfclf"]
 
 [ext_resource type="Texture2D" uid="uid://btl1sewksevpt" path="res://assets/sprites/test/background_1.png" id="1_d10np"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_l0ch1"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_battle_end_state.gd" id="8_bfm56"]
 [ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_over_state.gd" id="9_mm5ci"]
 [ext_resource type="Script" path="res://scenes/cursor_detector.gd" id="15_jas3j"]
+[ext_resource type="Script" path="res://scenes/town.gd" id="16_v1yyn"]
 
 [sub_resource type="Curve2D" id="Curve2D_0pey5"]
 _data = {
@@ -66,6 +67,9 @@ point_count = 5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vet1i"]
 radius = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7ul5"]
+size = Vector2(106, 20)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_l0ch1")
@@ -211,8 +215,46 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CursorDetector/CursorDetectorArea"]
 shape = SubResource("CircleShape2D_vet1i")
 
+[node name="Towns" type="Node2D" parent="."]
+
+[node name="Town" type="Node2D" parent="Towns"]
+position = Vector2(179, 242)
+script = ExtResource("16_v1yyn")
+
+[node name="HealthBar" type="ProgressBar" parent="Towns/Town"]
+offset_left = -50.0
+offset_top = 12.0
+offset_right = 50.0
+offset_bottom = 16.0
+show_percentage = false
+
+[node name="Area2D" type="Area2D" parent="Towns/Town"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Towns/Town/Area2D"]
+shape = SubResource("RectangleShape2D_d7ul5")
+
+[node name="Town2" type="Node2D" parent="Towns"]
+position = Vector2(456, 242)
+script = ExtResource("16_v1yyn")
+
+[node name="HealthBar" type="ProgressBar" parent="Towns/Town2"]
+offset_left = -50.0
+offset_top = 12.0
+offset_right = 50.0
+offset_bottom = 16.0
+show_percentage = false
+
+[node name="Area2D" type="Area2D" parent="Towns/Town2"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Towns/Town2/Area2D"]
+shape = SubResource("RectangleShape2D_d7ul5")
+
 [connection signal="pressed" from="UI/MainUI/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="UI/MainUI/NextWaveButton" to="." method="_on_next_wave_button_pressed"]
 [connection signal="pressed" from="UI/MainUI/ShopButton" to="." method="_on_shop_button_pressed"]
 [connection signal="area_entered" from="CursorDetector/CursorDetectorArea" to="CursorDetector" method="_on_cursor_detector_area_area_entered"]
 [connection signal="area_exited" from="CursorDetector/CursorDetectorArea" to="CursorDetector" method="_on_cursor_detector_area_area_exited"]
+[connection signal="area_entered" from="Towns/Town/Area2D" to="Towns/Town" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Towns/Town2/Area2D" to="Towns/Town2" method="_on_area_2d_area_entered"]

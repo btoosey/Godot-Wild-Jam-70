@@ -5,10 +5,10 @@ extends Node2D
 @export var damage: int = 5
 
 @onready var ray_cast_left = $RayCastLeft
-var ray_cast_left_active = true
+var ray_cast_left_active = false
 
 @onready var ray_cast_right = $RayCastRight
-var ray_cast_right_active = true
+var ray_cast_right_active = false
 
 func _ready():
 	ray_cast_left.collide_with_areas = true
