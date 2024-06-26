@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://06wdk2nxfclf"]
+[gd_scene load_steps=28 format=3 uid="uid://06wdk2nxfclf"]
 
 [ext_resource type="Texture2D" uid="uid://btl1sewksevpt" path="res://assets/sprites/test/background_1.png" id="1_d10np"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_l0ch1"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_shop_state.gd" id="5_oiq8e"]
 [ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_battle_start_state.gd" id="6_boxnl"]
 [ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_battle_state.gd" id="7_jtwqv"]
+[ext_resource type="Script" path="res://scenes/shop_ui.gd" id="7_xewfl"]
 [ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_battle_end_state.gd" id="8_bfm56"]
 [ext_resource type="Script" path="res://scripts/game_state_machine/game_states/game_over_state.gd" id="9_mm5ci"]
 [ext_resource type="Script" path="res://scenes/cursor_detector.gd" id="15_jas3j"]
@@ -167,13 +168,159 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("7_xewfl")
+
+[node name="Cash" type="Label" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 7.0
+offset_right = 341.0
+offset_bottom = 30.0
 
 [node name="Panel" type="Panel" parent="UI/ShopUI"]
 layout_mode = 0
-offset_left = 382.0
-offset_top = 85.0
-offset_right = 602.0
-offset_bottom = 203.0
+offset_left = 113.0
+offset_top = 5.0
+offset_right = 527.0
+offset_bottom = 230.0
+
+[node name="Head1L" type="Button" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 61.0
+offset_right = 263.0
+offset_bottom = 92.0
+text = "Unlock Head 1 (L)"
+
+[node name="Head1LPrice" type="Label" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 64.0
+offset_right = 307.0
+offset_bottom = 87.0
+text = "0
+"
+
+[node name="Head1R" type="Button" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 61.0
+offset_right = 520.0
+offset_bottom = 92.0
+text = "Unlock Head 1 (R)"
+
+[node name="Head1RPrice" type="Label" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 65.0
+offset_right = 376.0
+offset_bottom = 88.0
+
+[node name="Head2L" type="Button" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 99.0
+offset_right = 263.0
+offset_bottom = 130.0
+text = "Unlock Head 2 (L)"
+
+[node name="Head2LPrice" type="Label" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 102.0
+offset_right = 307.0
+offset_bottom = 125.0
+
+[node name="Head2R" type="Button" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 99.0
+offset_right = 520.0
+offset_bottom = 130.0
+text = "Unlock Head 2 (R)"
+
+[node name="Head2RPrice" type="Label" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 334.0
+offset_top = 102.0
+offset_right = 374.0
+offset_bottom = 125.0
+
+[node name="Head3L" type="Button" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 143.0
+offset_right = 262.0
+offset_bottom = 174.0
+text = "Unlock Head 3 (L)"
+
+[node name="Head3LPrice" type="Label" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 148.0
+offset_right = 304.0
+offset_bottom = 171.0
+
+[node name="Head3R" type="Button" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 377.0
+offset_top = 143.0
+offset_right = 521.0
+offset_bottom = 174.0
+text = "Unlock Head 3 (R)"
+
+[node name="Head3RPrice" type="Label" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 339.0
+offset_top = 142.0
+offset_right = 379.0
+offset_bottom = 165.0
+
+[node name="Head4L" type="Button" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 183.0
+offset_right = 262.0
+offset_bottom = 214.0
+text = "Unlock Head 4 (L)"
+
+[node name="Head4LPrice" type="Label" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 185.0
+offset_right = 300.0
+offset_bottom = 208.0
+
+[node name="Head4R" type="Button" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 377.0
+offset_top = 185.0
+offset_right = 521.0
+offset_bottom = 216.0
+text = "Unlock Head 4 (R)"
+
+[node name="Head4RPrice" type="Label" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 189.0
+offset_right = 377.0
+offset_bottom = 212.0
+
+[node name="DamageUp" type="Button" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 15.0
+offset_right = 291.0
+offset_bottom = 46.0
+text = "Totem Damage Up"
+
+[node name="FireRateUp" type="Button" parent="UI/ShopUI"]
+layout_mode = 0
+offset_left = 349.0
+offset_top = 17.0
+offset_right = 493.0
+offset_bottom = 48.0
+text = "Fire Rate Up"
 
 [node name="GameStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_70o6n")
@@ -251,9 +398,19 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Towns/Town2/Area2D"]
 shape = SubResource("RectangleShape2D_d7ul5")
 
+[connection signal="totem_direction_activated" from="TotemHeads" to="UI/ShopUI" method="_on_totem_heads_totem_direction_activated"]
 [connection signal="pressed" from="UI/MainUI/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="UI/MainUI/NextWaveButton" to="." method="_on_next_wave_button_pressed"]
 [connection signal="pressed" from="UI/MainUI/ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="UI/ShopUI/Head1L" to="TotemHeads" method="_on_head_1l_pressed"]
+[connection signal="pressed" from="UI/ShopUI/Head1R" to="TotemHeads" method="_on_head_1r_pressed"]
+[connection signal="pressed" from="UI/ShopUI/Head2L" to="TotemHeads" method="_on_head_2l_pressed"]
+[connection signal="pressed" from="UI/ShopUI/Head2R" to="TotemHeads" method="_on_head_2r_pressed"]
+[connection signal="pressed" from="UI/ShopUI/Head3L" to="TotemHeads" method="_on_head_3l_pressed"]
+[connection signal="pressed" from="UI/ShopUI/Head3R" to="TotemHeads" method="_on_head_3r_pressed"]
+[connection signal="pressed" from="UI/ShopUI/Head4L" to="TotemHeads" method="_on_head_4l_pressed"]
+[connection signal="pressed" from="UI/ShopUI/Head4R" to="TotemHeads" method="_on_head_4r_pressed"]
+[connection signal="pressed" from="UI/ShopUI/DamageUp" to="TotemHeads" method="_on_damage_up_pressed"]
 [connection signal="area_entered" from="CursorDetector/CursorDetectorArea" to="CursorDetector" method="_on_cursor_detector_area_area_entered"]
 [connection signal="area_exited" from="CursorDetector/CursorDetectorArea" to="CursorDetector" method="_on_cursor_detector_area_area_exited"]
 [connection signal="area_entered" from="Towns/Town/Area2D" to="Towns/Town" method="_on_area_2d_area_entered"]

@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var firing_interval = $FiringInterval
 @export var damage: int = 5
+var price: int = 10
 
 @onready var ray_cast_left = $RayCastLeft
 var ray_cast_left_active = false
@@ -29,3 +30,10 @@ func _on_firing_interval_timeout():
 	if ray_cast_right_active and ray_cast_right.is_colliding():
 		var target_enemy = ray_cast_right.get_collider().get_parent()
 		target_enemy.damage(damage)
+
+func increase_damage() -> void:
+	damage += 5
+
+func decrease_fire_rate() -> void:
+	if firing_interval.wait_time > 0.2:
+		firing_interval.wait_time -= 0.2

@@ -4,8 +4,10 @@ extends GameState
 @onready var enemy_paths = $"../../EnemyPaths"
 @onready var cursor_detector = $"../../CursorDetector"
 @onready var totem_heads = $"../../TotemHeads"
+@onready var shop_button = $"../../UI/MainUI/ShopButton"
 
 func enter():
+	shop_button.visible = false
 	next_wave_button.visible = false
 	enemy_paths.spawn_enemy_wave()
 	cursor_detector.active = true
